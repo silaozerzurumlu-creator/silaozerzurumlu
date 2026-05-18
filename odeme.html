@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ödeme Sayfası</title>
+    <title>Ödeme - Sılanın Mağazası</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">Sılanın Mağazası</div>
+        <div class="logo">Sılanın Mağazası - Ödeme</div>
         <ul>
             <li><a href="../index.html">Ana Sayfa</a></li>
             <li><a href="urunler.html">Ürünler</a></li>
@@ -19,46 +19,24 @@
 
     <main class="content" style="max-width: 500px;">
         <h2 style="text-align: center; margin-bottom: 20px;">Ödeme Ekranı</h2>
-        
+       
         
         <form onsubmit="siparisTamamla(); return false;" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            
-            <div class="form-grup">
-                <label for="kart-ad">Kart Üzerindeki İsim:</label>
-                <input type="text" id="kart-ad" placeholder="Ahmet Kar" required>
-            </div>
-            
-            <div class="form-grup">
-                <label for="kart-no">Kart Numarası:</label>
-                <input type="text" id="kart-no" maxlength="16" placeholder="0000111122223333" required>
-            </div>
-            
+            <div class="form-grup"><label for="kart-ad">Kart Üzerindeki İsim:</label><input type="text" id="kart-ad" required></div>
+            <div class="form-grup"><label for="kart-no">Kart Numarası:</label><input type="text" id="kart-no" maxlength="16" required></div>
             <div style="display: flex; gap: 15px;">
-                <div class="form-grup" style="flex: 1;">
-                    <label for="skt">Sık. Tarihi:</label>
-                    <input type="text" id="skt" placeholder="MM/YY" maxlength="5" required>
-                </div>
-                <div class="form-grup" style="flex: 1;">
-                    <label for="cvv">CVV (Şifre):</label>
-                    <input type="password" id="cvv" placeholder="***" maxlength="3" required>
-                </div>
+                <div class="form-grup" style="flex: 1;"><label for="skt">Sık. Tarihi:</label><input type="text" id="skt" maxlength="5" required></div>
+                <div class="form-grup" style="flex: 1;"><label for="cvv">CVV:</label><input type="password" id="cvv" maxlength="3" required></div>
             </div>
-            
             <br>
             <button type="submit" style="background-color: #2ecc71; color: white; padding: 12px; font-size: 1.1rem;">Siparişi Tamamla</button>
         </form>
     </main>
 
-
     <script>
         function siparisTamamla() {
-            // Sipariş tamamlandığında mesaj kutusu açılır
             alert("Siparişiniz başarıyla alındı! Bizi tercih ettiğiniz için teşekkür ederiz.");
-            
-            // Alışveriş bittiği için sepeti tamamen temizliyoruz
             localStorage.removeItem("sepet");
-            
-            // Kullanıcıyı ana sayfaya geri fırlatıyoruz
             window.location.href = "../index.html";
         }
     </script>
