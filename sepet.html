@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BenimMağazam</div>
+        <ul>
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="urunler.html">Ürünler</a></li>
+            <li><a href="sepet.html">Sepetimiz</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <h2>Alışveriş Sepetiniz</h2>
+        <br>
+        <ul id="sepet-listesi" style="list-style: none; background: white; padding: 20px; border-radius: 5px;">
+            <li>Sepetiniz şu anda boş.</li>
+        </ul>
+        <br>
+        <h3>Toplam Tutar: <span id="toplam-fiyat">0</span> TL</h3>
+        <br>
+        <button onclick="sepetiTemizle()" style="background-color: red; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 3px;">Sepeti Temizle</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Web Tasarımı Ödevi - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="../scripts/myscript.js"></script>
+    <script>
+        // Sayfa açıldığında sepeti ekrana basması için tetikliyoruz
+        sepetiGoster();
+    </script>
+</body>
+</html>
