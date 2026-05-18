@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim - Sılanın Mağazası</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Sılanın Mağazası</div>
+        <ul>
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="urunler.html">Ürünler</a></li>
+            <li><a href="sepet.html">Sepetimiz</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <h2>Alışveriş Sepetiniz</h2>
+        <br>
+        <ul id="sepet-listesi" style="list-style: none; background: white; padding: 20px; border-radius: 5px;">
+            <li>Sepetiniz şu anda boş.</li>
+        </ul>
+        <br>
+        <h3>Toplam Tutar: <span id="toplam-fiyat">0</span> TL</h3>
+        <br>
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button onclick="sepetiTemizle()" style="background-color: #777; color: white; padding: 12px 20px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: auto;">Sepeti Temizle</button>
+            <button onclick="odemeSayfasinaGit()" style="background-color: #2ecc71; color: white; padding: 12px 30px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: auto;">Siparişi Tamamla</button>
+        </div>
+    </main>
+
+
+    <script src="../scripts/myscript.js"></script>
+    <script>
+        function sepetiGoster() {
+            let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+            let sepetListesi = document.getElementById("sepet-listesi");
+            let toplamFiyatSpan = document.getElementById("toplam-fiyat");
+            sepetListesi.innerHTML = "";
+            let toplam = 0;
+            if (sepet.length === 0) {
+                sepetListesi.innerHTML = "<li>Sepetiniz şu anda boş.</li>";
+                toplamFiyatSpan.innerText = "0";
+                return;
+            }
+            sepet.forEach((urun, index) => {
+                let li = document.createElement("li");
+                li.style.display = "flex";
+                li.style.justifyContent = "space-between";
+                li.style.alignItems = "center";
+                li.style.marginBottom = "10px";
+                li.style.padding = "10px";
+                li.style.borderBottom = "1px solid #eee";
+                li.innerHTML = `
+                    <span style="flex-grow: 1;">${urun.isim} - ${urun.fiyat} TL</span>
+                    <button onclick="urunSil(${index})" style="background-color: #ff3333; color: white; border: none; padding: 3px 8px; font-size: 0.8rem; cursor: pointer; border-radius: 3px; width: auto;">Kaldır</button>
+                `;
+                sepetListesi.appendChild(li);
+                toplam += urun.fiyat;
+            });
+            toplamFiyatSpan.innerText = toplam;
+        }
+        function odemeSayfasinaGit() {
+            let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+            if (sepet.length === 0) { alert("Sepetiniz boşken sipariş veremezsiniz!"); return; }
+            window.location.href = "odeme.html";
+        }
+        function sepetiTemizle() { localStorage.removeItem("sepet"); sepetiGoster(); }
+        sepetiGoster();
+    </script>
+</body>
+</html>

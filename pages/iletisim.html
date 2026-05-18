@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Sılanın Mağazası</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Sılanın Mağazası</div>
+        <ul>
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="urunler.html">Ürünler</a></li>
+            <li><a href="sepet.html">Sepetimiz</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <h2>Bizimle İletişime Geçin</h2>
+        <br>
+        <form action="#" method="post" style="background: white; padding: 20px; border-radius: 5px;" onsubmit="alert('Mesajınız başarıyla alındı!'); return false;">
+            <div class="form-grup">
+                <label for="ad">Adınız Soyadınız:</label>
+                <input type="text" id="ad" required>
+            </div>
+            <div class="form-grup">
+                <label for="eposta">E-Posta Adresiniz:</label>
+                <input type="email" id="eposta" required>
+            </div>
+            <div class="form-grup">
+                <label for="mesaj">Mesajınız:</label>
+                <textarea id="mesaj" rows="5" required></textarea>
+            </div>
+            <button type="submit" style="background-color: #333; color: white; padding: 10px 20px; border: none; cursor: pointer;">Gönder</button>
+        </form>
+    </main>
+
+
+</body>
+</html>
