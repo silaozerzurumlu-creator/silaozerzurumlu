@@ -9,7 +9,7 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">BenimMağazam</div>
+        <div class="logo">Sılanın Mağazası</div>
         <ul>
             <li><a href="../index.html">Ana Sayfa</a></li>
             <li><a href="urunler.html">Ürünler</a></li>
@@ -17,8 +17,7 @@
             <li><a href="iletisim.html">İletişim</a></li>
         </ul>
     </nav>
-
-    <main class="content">
+<main class="content">
         <h2>Alışveriş Sepetiniz</h2>
         <br>
         <ul id="sepet-listesi" style="list-style: none; background: white; padding: 20px; border-radius: 5px;">
@@ -27,17 +26,72 @@
         <br>
         <h3>Toplam Tutar: <span id="toplam-fiyat">0</span> TL</h3>
         <br>
-        <button onclick="sepetiTemizle()" style="background-color: red; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 3px;">Sepeti Temizle</button>
+        
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button onclick="sepetiTemizle()" style="background-color: #777; color: white; padding: 12px 20px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: auto;">Sepeti Temizle</button>
+            
+            <button onclick="odemeSayfasinaGit()" style="background-color: #2ecc71; color: white; padding: 12px 30px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: auto;">Siparişi Tamamla</button>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Web Tasarımı Ödevi - Tüm Hakları Saklıdır.</p>
-    </footer>
 
     <script src="../scripts/myscript.js"></script>
     <script>
-        // Sayfa açıldığında sepeti ekrana basması için tetikliyoruz
+        function sepetiGoster() {
+            let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+            let sepetListesi = document.getElementById("sepet-listesi");
+            let toplamFiyatSpan = document.getElementById("toplam-fiyat");
+            
+            sepetListesi.innerHTML = "";
+            let toplam = 0;
+
+            if (sepet.length === 0) {
+                sepetListesi.innerHTML = "<li>Sepetiniz şu anda boş.</li>";
+                toplamFiyatSpan.innerText = "0";
+                return;
+            }
+
+            sepet.forEach((urun, index) => {
+                let li = document.createElement("li");
+                li.style.display = "flex";
+                li.style.justifyContent = "space-between";
+                li.style.alignItems = "center";
+                li.style.marginBottom = "10px";
+                li.style.padding = "10px";
+                li.style.borderBottom = "1px solid #eee";
+                
+                // Kaldır butonu padding değerleri küçültülerek minik ve kibar hale getirildi
+                li.innerHTML = `
+                    <span style="flex-grow: 1;">${urun.isim} - ${urun.fiyat} TL</span>
+                    <button onclick="urunSil(${index})" style="background-color: #ff3333; color: white; border: none; padding: 3px 8px; font-size: 0.8rem; cursor: pointer; border-radius: 3px; width: auto;">Kaldır</button>
+                `;
+                
+                sepetListesi.appendChild(li);
+                toplam += urun.fiyat;
+            });
+
+            toplamFiyatSpan.innerText = toplam;
+        }
+
+        // Ödeme sayfasına yönlendiren yeni fonksiyon
+        function odemeSayfasinaGit() {
+            let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+            if (sepet.length === 0) {
+                alert("Sepetiniz boşken sipariş veremezsiniz!");
+                return;
+            }
+            // Sahte ödeme sayfasına gönderiyoruz
+            window.location.href = "odeme.html";
+        }
+
+        function sepetiTemizle() {
+            localStorage.removeItem("sepet");
+            sepetiGoster();
+        }
+
         sepetiGoster();
     </script>
+    
+    
 </body>
 </html>

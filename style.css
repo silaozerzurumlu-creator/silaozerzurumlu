@@ -1,0 +1,152 @@
+/* Genel Sayfa Ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Navbar (Menü) Tasarımı */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar ul li a:hover {
+    color: #ff3333;
+}
+
+/* İçerik Alanı */
+.content {
+    padding: 40px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80px;
+}
+
+/* --- KUTUCUK VE RESİM BOYUTU AYARLARI (İSTEDİĞİN KISIM) --- */
+
+/* Ürünlerin yan yana dizileceği ana alan */
+.urun-listesi {
+    display: flex;
+    flex-wrap: wrap; /* Sığmayan kutular alt satıra geçsin */
+    gap: 25px;       /* Kutuların arasındaki boşluk */
+    justify-content: center;
+}
+
+/* Her bir ürünün kutucuk (kart) tasarımı */
+.urun-kart {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 250px;      /* Kutuların genişliği sabitlendi */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Hafif gölgelendirme */
+    transition: transform 0.2s;
+}
+
+/* Fareyle kutunun üzerine gelince hafif büyüme efekti */
+.urun-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Resimlerin boyutunu normalleştiren sihirli kod */
+.urun-kart img {
+    width: 100%;       /* Kutunun genişliğine göre kendini ayarlar */
+    height: 180px;     /* Yüksekliği sabitledik, devasa görünmez */
+    object-fit: contain; /* Resmin kalitesi bozulmadan kutuya sığmasını sağlar */
+    margin-bottom: 15px;
+    background-color: #fafafa;
+    border-radius: 4px;
+}
+
+.urun-kart h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.urun-kart p {
+    font-weight: bold;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+/* Buton Tasarımları */
+.urun-kart button, .content button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.urun-kart button:hover {
+    background-color: #ff3333;
+}
+
+/* Form Alanı (İletişim için) */
+.form-grup {
+    margin-bottom: 15px;
+}
+
+.form-grup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-grup input, .form-grup textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Detay Sayfası Tasarımı */
+.detay-konteyner {
+    display: flex;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Footer (Alt Bilgi) */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}

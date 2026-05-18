@@ -1,61 +1,33 @@
-// 11. KRİTER İÇİN SATIR SATIR AÇIKLAMALI JAVASCRIPT KODLARI
+// 1. ÜRÜNÜ SEPETE EKLEME FONKSİYONU
+function sepeteEkle(urunAdi, urunFiyat) {
+    // Hafızada önceden sepet var mı kontrol et, yoksa boş bir liste (dizi) oluştur
+    let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
 
-// Bu fonksiyon sepete ürün eklemeye yarar. Ürün adı ve fiyatı alır.
-function sepeteEkle(urunAdi, urunFiyati) {
-    // Önce hafızada daha önce sepet oluşturulmuş mu ona bakıyoruz.
-    let sepet = localStorage.getItem("sepetim");
+    // Yeni ürünü obje olarak listeye ekle
+    sepet.push({
+        isim: urunAdi,
+        fiyat: urunFiyat
+    });
+
+    // Güncel sepeti tarayıcı hafızasına (localStorage) kaydet
+    localStorage.setItem("sepet", JSON.stringify(sepet));
+
+    // Kullanıcıya eklendiğine dair tatlı bir uyarı ver
+    alert(urunAdi + " sepetinize başarıyla eklendi!");
+}
+
+// 2. SEPETTEN TEK BİR ÜRÜNÜ SİLME FONKSİYONU
+function urunSil(index) {
+    let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
     
-    // Eğer sepet boşsa yeni bir dizi (array) oluşturuyoruz.
-    if (sepet == null) {
-        sepet = [];
-    } else {
-        // Eğer sepet varsa, metin formatından JavaScript nesnesine (diziye) çeviriyoruz.
-        sepet = JSON.parse(sepet);
+    // Belirtilen sıradaki ürünü sepetten çıkart
+    sepet.splice(index, 1);
+    
+    // Güncel sepeti hafızaya kaydet
+    localStorage.setItem("sepet", JSON.stringify(sepet));
+    
+    // Sepet sayfasındaki listeyi anında yenile
+    if (typeof sepetiGoster === "function") {
+        sepetiGoster();
     }
-
-    // Yeni ürünü obje olarak sepet dizisine ekliyoruz.
-    sepet.push({ ad: urunAdi, fiyat: urunFiyati });
-
-    // Güncel sepetimizi tekrar tarayıcı hafızasına (localStorage) kaydediy""oruz.
-    localStorage.setItem("sepetim", JSON.stringify(sepet));
-
-    // Kullanıcıya bilgi veriyoruz.
-    alert(urunAdi + " sepete eklendi!");
-}
-
-// Bu fonksiyon sepet.html sayfasında sepet içeriğini ekranda listelemek için çalışır.
-function sepetiGoster() {
-    let sepet = localStorage.getItem("sepetim");
-    let listeElemani = document.getElementById("sepet-listesi");
-    let toplamFiyatElemani = document.getElementById("toplam-fiyat");
-
-    // Eğer sepet boşsa veya içi temizlenmişse ekrana uyarı yazıyoruz.
-    if (sepet == null || JSON.parse(sepet).length == 0) {
-        listeElemani.innerHTML = "<li>Sepetinizde ürün bulunmamaktadır.</li>";
-        toplamFiyatElemani.innerText = "0";
-        return;
-    }
-
-    // Hafızadaki sepeti çözüyoruz.
-    sepet = JSON.parse(sepet);
-    listeElemani.innerHTML = ""; // Önce listenin içini boşaltıyoruz.
-    let toplam = 0;
-
-    // Klasik w3schools for döngüsü ile ürünleri tek tek dönüyoruz.
-    for (let i = 0; i < sepet.length; i++) {
-        // Her ürün için bir HTML liste elemanı (li) oluşturuyoruz.
-        listeElemani.innerHTML += "<li>" + sepet[i].ad + " - " + sepet[i].fiyat + " TL</li>";
-        // Toplam fiyata ekliyoruz.
-        toplam += sepet[i].fiyat;
-    }
-
-    // Toplam tutarı ekrana yazdırıyoruz.
-    toplamFiyatElemani.innerText = toplam;
-}
-
-// Sepeti tamamen sıfırlayan fonksiyon
-function sepetiTemizle() {
-    localStorage.removeItem("sepetim");
-    // Ekranı güncellemek için fonksiyonu tekrar çağırıyoruz.
-    sepetiGoster();
 }
