@@ -1,4 +1,3 @@
-/* Genel Sayfa Ayarları */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     color: #333;
 }
 
-/* Navbar (Menü) Tasarımı */
 .navbar {
     background-color: #333;
     color: white;
@@ -40,7 +38,6 @@ body {
     color: #ff3333;
 }
 
-/* İçerik Alanı */
 .content {
     padding: 40px 50px;
     max-width: 1200px;
@@ -48,39 +45,33 @@ body {
     min-height: 80px;
 }
 
-/* --- KUTUCUK VE RESİM BOYUTU AYARLARI (İSTEDİĞİN KISIM) --- */
-
-/* Ürünlerin yan yana dizileceği ana alan */
 .urun-listesi {
     display: flex;
-    flex-wrap: wrap; /* Sığmayan kutular alt satıra geçsin */
-    gap: 25px;       /* Kutuların arasındaki boşluk */
+    flex-wrap: wrap; 
+    gap: 25px;      
     justify-content: center;
 }
 
-/* Her bir ürünün kutucuk (kart) tasarımı */
 .urun-kart {
     background-color: white;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    width: 250px;      /* Kutuların genişliği sabitlendi */
+    width: 250px;      
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Hafif gölgelendirme */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
     transition: transform 0.2s;
 }
 
-/* Fareyle kutunun üzerine gelince hafif büyüme efekti */
 .urun-kart:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-/* Resimlerin boyutunu normalleştiren sihirli kod */
 .urun-kart img {
-    width: 100%;       /* Kutunun genişliğine göre kendini ayarlar */
-    height: 180px;     /* Yüksekliği sabitledik, devasa görünmez */
-    object-fit: contain; /* Resmin kalitesi bozulmadan kutuya sığmasını sağlar */
+    width: 100%;       
+    height: 180px;     
+    object-fit: contain; 
     margin-bottom: 15px;
     background-color: #fafafa;
     border-radius: 4px;
@@ -98,7 +89,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Buton Tasarımları */
 .urun-kart button, .content button {
     background-color: #333;
     color: white;
@@ -114,7 +104,6 @@ body {
     background-color: #ff3333;
 }
 
-/* Form Alanı (İletişim için) */
 .form-grup {
     margin-bottom: 15px;
 }
@@ -132,7 +121,6 @@ body {
     border-radius: 4px;
 }
 
-/* Detay Sayfası Tasarımı */
 .detay-konteyner {
     display: flex;
     gap: 40px;
@@ -142,7 +130,6 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* Footer (Alt Bilgi) */
 footer {
     background-color: #333;
     color: white;
